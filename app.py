@@ -17,7 +17,7 @@ def get_db_connection():
     conn = connector.connect(
         host="localhost",
         user="root",
-        password="Shukrana7*",
+        password = os.environ.get("DB_PASSWORD"),
         database="FinanceDB",
     )
     cursor = conn.cursor(dictionary=True)
@@ -134,4 +134,4 @@ def apply_filters():
     return render_template("home.html", stocks=results, summary=summary)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
