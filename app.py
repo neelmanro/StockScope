@@ -5,7 +5,7 @@ import csv
 import openai
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 app = Flask(__name__)
