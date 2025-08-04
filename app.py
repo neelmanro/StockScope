@@ -5,17 +5,16 @@ import csv
 import openai
 
 
-openai.api_key = "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"
-
+openai.api_key = "open_id"
 
 app = Flask(__name__)
 
 def get_db_connection():
     conn = connector.connect(
-        host="db4free.net",       
-        user="your_username",       
-        password="your_password",  
-        database="stockscope",      
+        host="",       
+        user="",       
+        password="",   
+        database="",      
         port=3306
     )
     cursor = conn.cursor(dictionary=True)
