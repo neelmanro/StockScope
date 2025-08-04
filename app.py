@@ -12,10 +12,11 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = connector.connect(
-        host="localhost",
-        user="root",
-        password="Shukrana7*",
-        database="StockScope",
+        host="db4free.net",       
+        user="your_username",       
+        password="your_password",  
+        database="stockscope",      
+        port=3306
     )
     cursor = conn.cursor(dictionary=True)
     return conn, cursor
