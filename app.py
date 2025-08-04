@@ -3,13 +3,10 @@ import mysql.connector as connector
 import yfinance as yf
 import csv
 import openai
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 
-# DO NOT put your key here!
-openai.api_key = os.environ.get("OPENAI_API_KEY")  # The key is read from your environment variable
+openai.api_key = "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"
+
 
 app = Flask(__name__)
 
@@ -17,8 +14,8 @@ def get_db_connection():
     conn = connector.connect(
         host="localhost",
         user="root",
-        password = os.environ.get("DB_PASSWORD"),
-        database="FinanceDB",
+        password="Shukrana7*",
+        database="StockScope",
     )
     cursor = conn.cursor(dictionary=True)
     return conn, cursor
@@ -134,4 +131,4 @@ def apply_filters():
     return render_template("home.html", stocks=results, summary=summary)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(debug=True)
