@@ -1,0 +1,20 @@
+<body style="background-color: black; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; text-align: center;">
+
+  <h1 style="margin-bottom: 10px;">🚀 Loading <span style="color: #00ffcc;">StockScope</span>...</h1>
+  <h2 style="margin-bottom: 10px;">📈 Fetching the latest stock data for you</h2>
+  <h3 style="margin-bottom: 30px;">⏳ This may take up to <span style="color: #ffaa00;">5 seconds</span></h3>
+
+  <form id="autoForm" action="/home" method="POST" style="display: none;">
+    <input type="hidden" name="ticker" value="">
+    <input type="hidden" name="sector" value="">
+    <input type="hidden" name="price_range" value="">
+    <input type="hidden" name="volatility" value="">
+  </form>
+
+  <script>
+    window.onload = function () {
+      document.getElementById("autoForm").submit(); // submit immediately
+    };
+  </script>
+
+</body>
