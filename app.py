@@ -3,20 +3,25 @@ import mysql.connector as connector
 import yfinance as yf
 import csv
 import openai
+import threading
+import time
 
 
-openai.api_key = "api_key"
+openai.api_key = "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"
+
+
 app = Flask(__name__)
 
 def get_db_connection():
     conn = connector.connect(
-         host="localhost",
-        user="",
-        password="",
+        host="localhost",
+        user="root",
+        password="Shukrana7*",
         database="StockScope",
     )
     cursor = conn.cursor(dictionary=True)
     return conn, cursor
+
 
 def insert_stock_data():
     conn, cursor = get_db_connection()
@@ -84,9 +89,19 @@ def get_stock_summary(ticker, price, sector, volatility):
     except Exception as e:
         return f"Could not generate summary: {e}"
 
-@app.route("/", methods=["GET", "POST"])
+
+@app.route("/", methods=["GET"])
+def show_loading():
+    return render_template("loading.html")
+
+
+@app.route("/home", methods=["GET", "POST"])
 def apply_filters():
     update_prices_from_api()
+
+    threading.Thread(target=update_prices_from_api).start()
+    time.sleep(0)  # Simulate wait
+
 
     conn, cursor = get_db_connection()
     query = "SELECT * FROM stocks WHERE 1=1"
@@ -129,4 +144,6 @@ def apply_filters():
     return render_template("home.html", stocks=results, summary=summary)
 
 if __name__ == "__main__":
+    
     app.run(debug=True)
+
