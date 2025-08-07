@@ -7,7 +7,7 @@ import threading
 import time
 
 
-openai.api_key = "//"
+
 
 
 app = Flask(__name__)
