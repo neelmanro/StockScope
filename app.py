@@ -7,7 +7,7 @@ import threading
 import time
 
 
-openai.api_key = "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"
+openai.api_key = "//"
 
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ def get_db_connection():
     conn = connector.connect(
         host="localhost",
         user="root",
-        password="Shukrana7*",
+        password="//",
         database="StockScope",
     )
     cursor = conn.cursor(dictionary=True)
